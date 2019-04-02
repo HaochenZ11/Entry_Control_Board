@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <div ng-app="myApp" ng-controller="myCtrl">
+      <!-- {{person = {firstName:'Aman', lastName:'Bhargava'} }} -->
+      <!-- <input type="radio" ng-model="clicked"></input> -->
+      <p>{{person.firstName}}</p>
+      <input type = "text" ng-model="person.firstName">
+
+    </div>
+
+
+
+
+
+    <script>
+    person = {firstName:'Aman', lastname:'Bhargava'}
+    var app = angular.module('myApp', []);
+    let i = 0;
+    app.controller('myCtrl', function($scope) {
+      $scope.person={firstName:'John',lastName:'Doe'};
+      console.log("The controller is running " + i)
+      i++;
+    });
+    </script>
+
+  </body>
+</html>
