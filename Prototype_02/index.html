@@ -22,33 +22,48 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="main.css">
+
   </head>
   <body>
 
     <div class = "container" ng-app="app" ng-controller="control">
     <div class="jumbotron">
-    <h1>Entry Control Board v3.1</h1>
-    <p>A barebones approach to a testable solution</p>
+    <h1>Entry Control Board v3.2</h1>
+    <p>A slightly more than barebones approach to testing and implementation.</p>
     </div>
-    <p>This is a bare-bones version of our product. The only function is for it to be testable in the simplest sense. Its functionality includes:
+    <p>This builds on v3.1 by implementing basic timing functionality.
     <ol>
     <li>Table-based representation for the firefighting teams (hard-coded teams)</li>
     <li>Dropdown for each team for where they are, what their assignment is (hard-coded assignments)</li>
     <li>Dropdown for location (hard-coded locations)</li>
     </ol>
     </p>
+
+    <div ng-class = "{'alert-info': get_true()}">
+      TEST DIV
+    </div>
+
     <div class = "col-sm-12">
-      <table class = "table table-dark">
+      <table class = "table">
       <thead>
       <tr class = "top">
         <th>Team ID</th>
+        <!-- <th>Check In</th> -->
+        <th>Time Since Check-In</th>
         <th>Location</th>
         <th>Assignment</th>
       </tr>
       </thead>
       <tbody>
-      <tr ng-repeat = "firefighter in firefighters">
-        <td>{{firefighter.name}}</td>
+      <tr ng-class = "{'color-red': get_color(firefighter)}" ng-repeat = "firefighter in firefighters">
+        <th>{{firefighter.name}}
+        <!-- </td> -->
+        <!-- <td> -->
+          <button ng-click="firefighter.lastCheckIn = now">Check In!</button>
+        </th>
+        <td>
+          {{now-firefighter.lastCheckIn | date:'mm:ss'}}
+        </td>
         <!-- <td>{{locations[firefighter.location]}}</td> -->
         <td>
           <select class = "c_select" ng-change="changedBox" ng-model="firefighter.location" ng-options="location for location in locations"></select>

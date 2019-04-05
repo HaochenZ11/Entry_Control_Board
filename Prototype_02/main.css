@@ -2,3 +2,6 @@ table {
   font-size: 18pt;
   width: 100%
 }
+.color-red{
+  background-color: red;
+}
