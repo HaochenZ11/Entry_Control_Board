@@ -2,18 +2,66 @@
 <html lang="en-CA" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <!-- BOOTSTRAP MOBILE TAG -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>PROTOYPE_01</title>
+
+    <!-- ANGULAR IMPORT -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+    <!-- BOOTSTRAP IMPORTS -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="main.css">
   </head>
   <body>
-    <div ng-app="app" ng-controller="control">
-      <table>
+
+    <div class = "container" ng-app="app" ng-controller="control">
+    <div class="jumbotron">
+    <h1>Entry Control Board 3.1</h1>
+    <p>A barebones approach to a testable solution</p>
+    </div>
+    <p>This is a bare-bones version of our product. The only function is for it to be testable in the simplest sense. Its functionality includes:
+    <ol>
+    <li>Table-based representation for the firefighting teams (hard-coded teams)</li>
+    <li>Dropdown for each team for where they are, what their assignment is (hard-coded assignments)</li>
+    <li>Dropdown for location (hard-coded locations)</li>
+    </ol>
+    </p>
+    <div class = "col-sm-12">
+      <table class = "table table-dark">
+      <thead>
+      <tr class = "top">
+        <th>Team ID</th>
+        <th>Location</th>
+        <th>Assignment</th>
+      </tr>
+      </thead>
+      <tbody>
       <tr ng-repeat = "firefighter in firefighters">
         <td>{{firefighter.name}}</td>
-        <td>{{locations[firefighter.location]}}</td>
-        <td>{{assignments[firefighter.assignment]}}</td>
+        <!-- <td>{{locations[firefighter.location]}}</td> -->
+        <td>
+          <select class = "c_select" ng-change="changedBox" ng-model="firefighter.location" ng-options="location for location in locations"></select>
+        </td>
+        <!-- <td>{{assignments[firefighter.assignment] }}</td> -->
+        <td>
+          <select class = "c_select" ng-change="changedBox" ng-model="firefighter.assignment" ng-options="assignment for assignment in assignments"></select>
+        </td>
       </tr>
+      </tbody>
       </table>
+    </div>
+
     </div>
 
     <script src="app.js"></script>
