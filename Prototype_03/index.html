@@ -33,10 +33,12 @@
     </div>
     <p>This builds on v3.2 by implementing the following features and designs:
       <ul>
-        <li>Timing for how long firefighting teams have been in the fire.</li>
-        <li>Greying out for firefighting teams who are not currently engaged in the fire.</li>
-        <li>Functionality for adding and subtracting firefighting teams.</li>
+        <li>(done)Timing for how long firefighting teams have been in the fire.</li>
+        <li>(done)Whiting out for firefighting teams who are not currently engaged in the fire.</li>
+        <li>Sorting non-engaged firefighting teams to the bottom of the list.</li>
+        <li>(done)Functionality for adding and subtracting firefighting teams.</li>
         <li>Functionality for changing order of firefighting teams in table.</li>
+        <li></li>
         <li>(done)Contrast ratio testing.</li>
         <li>(done)16px+ fonts</li>
         <li>40x40pt alerts</li>
@@ -58,6 +60,7 @@
       <thead>
       <tr class = "top">
         <th>Team ID</th>
+        <th>Time In Fire</th>
         <th>Time Since Last Check</th>
         <th>Location</th>
         <th>Assignment</th>
@@ -65,11 +68,14 @@
       </thead>
       <tbody>
       <tr ng-repeat = "firefighter in firefighters">
-        <th>{{firefighter.name}}
+        <th>{{firefighter.name}} <button ng-click="checkInOrOut(firefighter)">{{getSignInOutText(firefighter)}}</button>
         </th>
-        <td ng-class = "{'color-red': get_color(firefighter)==='Red', 'color-orange': get_color(firefighter)==='Orange'}">
-          {{now-firefighter.lastCheckIn | date:'mm:ss'}}
-          <button ng-click="firefighter.lastCheckIn = now">Check!</button>
+        <td ng-class = "{'color-red': getColorInFire(firefighter)==='Red', 'color-orange': getColorInFire(firefighter)==='Orange'}">
+          {{getTimeInFire(firefighter) | date:'mm:ss'}}
+        </td>
+        <td ng-class = "{'color-red': getColorCheckIn(firefighter)==='Red', 'color-orange': getColorCheckIn(firefighter)==='Orange'}">
+          {{getTimeSinceCheckIn(firefighter) | date:'mm:ss'}}
+          <button ng-click="firefighter.lastCheckIn = now" ng-hide = "firefighter.lastCheckIn === false">Check!</button>
         </td>
         <!-- <td>{{locations[firefighter.location]}}</td> -->
         <td>
@@ -86,12 +92,43 @@
 
     <div class = "col-sm-12 alternate">
       <hr>
-      <h2>Settings</h2>
+      <h2>Settings: Timing</h2>
       <h3>Cutoff Times for Checking In</h3>
-      <p>First cutoff time (turns <span class="color-orange">orange</span> after this): <input type="number" name="checkInCutoff1" ng-model="timeTiers[0]"
+      <p>First cutoff time (turns <span class="color-orange">orange</span> after this): <input type="number" name="checkInCutoff1" ng-model="timeTiersCheckIn[0]"
            min="0">[seconds]</p>
-      <p>Second cutoff time (turns <span class="color-red">red</span> after this): <input type="number" name="checkInCutoff2" ng-model="timeTiers[1]"
+      <p>Second cutoff time (turns <span class="color-red">red</span> after this): <input type="number" name="checkInCutoff2" ng-model="timeTiersCheckIn[1]"
           min="0">[seconds]</p>
+
+      <h3>Cutoff Times for Being In Fire</h3>
+      <p>First cutoff time (turns <span class="color-orange">orange</span> after this): <input type="number" name="inFireCutoff1" ng-model="timeTiersInFire[0]"
+           min="0">[seconds]</p>
+      <p>Second cutoff time (turns <span class="color-red">red</span> after this): <input type="number" name="inFireCutoff2" ng-model="timeTiersInFire[1]"
+          min="0">[seconds]</p>
+    </div>
+
+    <div class = "col-sm-12">
+      <hr>
+      <h2>Settings: Teams</h2>
+      <table class = "table">
+        <thead>
+          <!-- See if this should be populated later -->
+          <th>Team ID</th>
+        </thead>
+        <tbody>
+          <tr ng-repeat = "(i, firefighter) in firefighters">
+            <th>{{firefighter.name}}</th>
+            <td>
+              <button ng-click = "deleteFirefighter(firefighters, i)">Delete Team</button>
+            </td>
+          </tr>
+          <tr>
+            <td>Add Team:</td>
+            <td>ID: <input type = "text" ng-model="addTeamName"></input></td>
+            <td><button ng-show="isValidName(addTeamName)" ng-click="addTeam(addTeamName)">Add Team</button></td>
+          </tr>
+        </tbody>
+      </table>
+      {{addTeamName}}
     </div>
 
 
