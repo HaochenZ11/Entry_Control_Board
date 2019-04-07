@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en-CA" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <!-- BOOTSTRAP MOBILE TAG -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>PROTOYPE_04</title>
+
+    <!-- ANGULAR IMPORT -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+    <!-- ANGULAR ROUTING IMPORT -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+
+    <!-- BOOTSTRAP IMPORTS -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="main.css">
+
+  </head>
+  <body>
+
+    <div class = "container" ng-app="app" ng-controller="control">
+      <div class="jumbotron">
+      <h1>Entry Control Board v3.4</h1>
+      <p>A solid, working version of a multi-view entry control board (ECB).</p>
+      </div>
+
+      <div class = "col-sm-12">
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#">YAAH</a>
+            </div>
+            <ul class="nav navbar-nav">
+              <li><a href="#/!">BOARD</a></li>
+              <li><a href="#!teams">Teams</a></li>
+              <li><a href="#!locations">Locations</a></li>
+              <li><a href="#!times">Times</a></li>
+              <li><a href="#!info">Info</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+      <div ng-view></div>
+
+    </div>
+
+    <script src="app.js"></script>
+    <script src="control.js"></script>
+
+  </body>
+</html>

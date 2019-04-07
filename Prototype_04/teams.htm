@@ -1,0 +1,30 @@
+<div class = "col-sm-12">
+  <h2>Settings: Teams</h2>
+  <table class = "table">
+    <thead>
+      <!-- See if this should be populated later -->
+      <th>Team ID</th>
+    </thead>
+    <tbody>
+      <tr ng-repeat = "(i, firefighter) in firefighters">
+        <th>{{firefighter.name}}</th>
+        <td>
+          <button ng-click = "deleteFirefighter(firefighters, i)">Delete Team</button>
+        </td>
+        <td>
+          <button ng-click = "moveUp(i)" ng-show="i != 0">Up</button>
+        </td>
+        <td>
+          <button ng-click = "moveDown(i)" ng-show="i != firefighters.length-1">Down</button>
+        </td>
+      </tr>
+      <tr>
+        <th>Add Team:</th>
+        <td>ID: <input type = "text" ng-model="addTeamName"></input>
+          <button ng-show="isValidName(addTeamName)" ng-click="addTeam(addTeamName); addTeamName = ''" class="bg-success">Add Team</button>
+          <button ng-show="!isValidName(addTeamName)" class="bg-warning">Invalid ID</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
