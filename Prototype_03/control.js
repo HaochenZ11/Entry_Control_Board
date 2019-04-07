@@ -11,6 +11,7 @@ app.controller("control", function($scope, $interval) {
   ]
 
   $scope.addTeamName = "";
+  $scope.addLocation = "";
 
   $scope.firefighters = [
     {name:"A", location:"--UNASSIGNED--", assignment:"--UNASSIGNED--", lastCheckIn:false, timeIn:false},
