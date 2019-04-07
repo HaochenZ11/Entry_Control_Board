@@ -1,4 +1,4 @@
-Team C goes to Top Floor for Rescue
-Team D goes to Kitchen for Rescue
-Team B goes to Basement for Fire Attack
-Team A goes to Far Bedroom for Search
+Team D goes to Top Floor for Rescue
+Team A goes to Basement for Fire Attack
+Team B goes to Back Yard for Rescue
+Team C goes to Far Bedroom for Search

@@ -32,7 +32,7 @@ def get_layout():
     return ret_val;
 
 def main():
-    for i in range(8):
+    for i in range(9):
         name = "script_"+str(i)+".txt"
         # f = open(name, mode='w', encoding='utf-8')      # equivalent to 'r' or 'rt'
         with open(name,'w',encoding = 'utf-8') as f:

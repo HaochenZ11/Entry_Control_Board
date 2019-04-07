@@ -1,0 +1,4 @@
+Team A goes to Basement for Fire Attack
+Team B goes to Kitchen for Search
+Team D goes to Back Yard for Ventilation
+Team C goes to Far Bedroom for Fire Attack
