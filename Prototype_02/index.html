@@ -5,7 +5,7 @@
     <!-- BOOTSTRAP MOBILE TAG -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>PROTOYPE_01</title>
+    <title>PROTOYPE_02</title>
 
     <!-- ANGULAR IMPORT -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
@@ -31,7 +31,8 @@
     <h1>Entry Control Board v3.2</h1>
     <p>A slightly more than barebones approach to testing and implementation.</p>
     </div>
-    <p>This builds on v3.1 by implementing basic timing functionality.
+    <p>This builds on v3.1 by implementing basic timing functionality and color-coding based on that timing functionality.</p>
+    <p>From previous versions, this includes the following features.
     <ol>
     <li>Table-based representation for the firefighting teams (hard-coded teams)</li>
     <li>Dropdown for each team for where they are, what their assignment is (hard-coded assignments)</li>
@@ -39,30 +40,23 @@
     </ol>
     </p>
 
-    <div ng-class = "{'alert-info': get_true()}">
-      TEST DIV
-    </div>
-
     <div class = "col-sm-12">
       <table class = "table">
       <thead>
       <tr class = "top">
         <th>Team ID</th>
-        <!-- <th>Check In</th> -->
-        <th>Time Since Check-In</th>
+        <th>Time Since Last Check</th>
         <th>Location</th>
         <th>Assignment</th>
       </tr>
       </thead>
       <tbody>
-      <tr ng-class = "{'color-red': get_color(firefighter)}" ng-repeat = "firefighter in firefighters">
+      <tr ng-repeat = "firefighter in firefighters">
         <th>{{firefighter.name}}
-        <!-- </td> -->
-        <!-- <td> -->
-          <button ng-click="firefighter.lastCheckIn = now">Check In!</button>
         </th>
-        <td>
+        <td ng-class = "{'color-red': get_color(firefighter)==='Red', 'color-orange': get_color(firefighter)==='Orange'}">
           {{now-firefighter.lastCheckIn | date:'mm:ss'}}
+          <button ng-click="firefighter.lastCheckIn = now">Check!</button>
         </td>
         <!-- <td>{{locations[firefighter.location]}}</td> -->
         <td>
@@ -76,6 +70,17 @@
       </tbody>
       </table>
     </div>
+
+    <div class = "col-sm-12 alternate">
+      <hr>
+      <h2>Settings</h2>
+      <h3>Cutoff Times for Checking In</h3>
+      <p>First cutoff time (turns <span class="color-orange">orange</span> after this): <input type="number" name="checkInCutoff1" ng-model="timeTiers[0]"
+           min="0">[seconds]</p>
+      <p>Second cutoff time (turns <span class="color-red">red</span> after this): <input type="number" name="checkInCutoff2" ng-model="timeTiers[1]"
+          min="0">[seconds]</p>
+    </div>
+
 
     </div>
 
