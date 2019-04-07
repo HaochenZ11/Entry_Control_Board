@@ -1,13 +1,13 @@
 app.controller("control", function($scope, $interval) {
 
   $scope.timeTiersCheckIn = [//currently in seconds
-    5,
-    10
+    60,
+    120
   ]
 
   $scope.timeTiersInFire = [//currently in seconds
-    30,
-    60
+    300,
+    600
   ]
 
   $scope.addTeamName = "";
