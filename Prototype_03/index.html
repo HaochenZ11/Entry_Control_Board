@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en-CA" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <!-- BOOTSTRAP MOBILE TAG -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>PROTOYPE_03</title>
+
+    <!-- ANGULAR IMPORT -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+    <!-- BOOTSTRAP IMPORTS -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="main.css">
+
+  </head>
+  <body>
+
+    <div class = "container" ng-app="app" ng-controller="control">
+    <div class="jumbotron">
+    <h1>Entry Control Board v3.3</h1>
+    <p>A solid, working version of a single-view entry control board (ECB).</p>
+    </div>
+    <p>This builds on v3.2 by implementing the following features and designs:
+      <ul>
+        <li>Timing for how long firefighting teams have been in the fire.</li>
+        <li>Greying out for firefighting teams who are not currently engaged in the fire.</li>
+        <li>Functionality for adding and subtracting firefighting teams.</li>
+        <li>Functionality for changing order of firefighting teams in table.</li>
+        <li>(done)Contrast ratio testing.</li>
+        <li>(done)16px+ fonts</li>
+        <li>40x40pt alerts</li>
+        <li></li>
+      </ul>
+    </p>
+
+    <p>From previous versions, this includes the following features.
+    <ol>
+    <li>Table-based representation for the firefighting teams (hard-coded teams).</li>
+    <li>Dropdown for each team for where they are, what their assignment is (hard-coded assignments).</li>
+    <li>Dropdown for location (hard-coded locations).</li>
+    <li>Check-in timing and custom color coding based on those times.</li>
+    </ol>
+    </p>
+
+    <div class = "col-sm-12">
+      <table class = "table">
+      <thead>
+      <tr class = "top">
+        <th>Team ID</th>
+        <th>Time Since Last Check</th>
+        <th>Location</th>
+        <th>Assignment</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat = "firefighter in firefighters">
+        <th>{{firefighter.name}}
+        </th>
+        <td ng-class = "{'color-red': get_color(firefighter)==='Red', 'color-orange': get_color(firefighter)==='Orange'}">
+          {{now-firefighter.lastCheckIn | date:'mm:ss'}}
+          <button ng-click="firefighter.lastCheckIn = now">Check!</button>
+        </td>
+        <!-- <td>{{locations[firefighter.location]}}</td> -->
+        <td>
+          <select class = "c_select" ng-change="changedBox" ng-model="firefighter.location" ng-options="location for location in locations"></select>
+        </td>
+        <!-- <td>{{assignments[firefighter.assignment] }}</td> -->
+        <td>
+          <select class = "c_select" ng-change="changedBox" ng-model="firefighter.assignment" ng-options="assignment for assignment in assignments"></select>
+        </td>
+      </tr>
+      </tbody>
+      </table>
+    </div>
+
+    <div class = "col-sm-12 alternate">
+      <hr>
+      <h2>Settings</h2>
+      <h3>Cutoff Times for Checking In</h3>
+      <p>First cutoff time (turns <span class="color-orange">orange</span> after this): <input type="number" name="checkInCutoff1" ng-model="timeTiers[0]"
+           min="0">[seconds]</p>
+      <p>Second cutoff time (turns <span class="color-red">red</span> after this): <input type="number" name="checkInCutoff2" ng-model="timeTiers[1]"
+          min="0">[seconds]</p>
+    </div>
+
+
+    </div>
+
+    <script src="app.js"></script>
+    <script src="control.js"></script>
+
+  </body>
+</html>
