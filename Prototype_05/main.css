@@ -58,3 +58,9 @@ a.navbar-brand {
 li {
   font-size: 14pt;
 }
+.on {
+  color: red!important;
+}
+.off {
+
+}

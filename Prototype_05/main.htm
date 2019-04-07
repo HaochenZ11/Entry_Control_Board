@@ -33,7 +33,7 @@
   </tr>
   <tr>
     <th>Add Team:</th>
-    <td colspan=4>ID: <input type = "text" ng-model="addTeamName"></input>
+    <td colspan="4">ID: <input type = "text" ng-model="addTeamName"></input>
       <button ng-show="isValidName(addTeamName)" ng-click="addTeam(addTeamName); addTeamName = ''" class="bg-success">Add Team</button>
       <button ng-show="!isValidName(addTeamName)" class="bg-warning">Invalid ID</button>
     </td>
