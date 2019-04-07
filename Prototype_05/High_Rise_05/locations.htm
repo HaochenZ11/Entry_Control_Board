@@ -1,0 +1,27 @@
+<div class = "col-sm-12">
+  <h2>Settings: Locations</h2>
+  <table class = "table">
+    <thead>
+      <!-- See if this should be populated later -->
+      <th>Location Name</th>
+    </thead>
+    <tbody>
+      <tr ng-repeat = "(i, location) in locations" ng-show = "i != 0">
+        <th>{{location}}</th>
+        <td>
+          <button ng-click = "locations.splice(i, 1)">Delete Location</button>
+        </td>
+      </tr>
+      <tr>
+        <th>Add Location:</th>
+        <td>Name: <input type = "text" ng-model="addLocation"></input>
+          <button ng-show="locations.indexOf(addLocation.toUpperCase()) === -1 && addLocation != ''" ng-click="locations.push(addLocation.toUpperCase()); addLocation = ''" class="bg-success">Add Location</button>
+          <button ng-show="locations.indexOf(addLocation.toUpperCase()) != -1 || addLocation === ''" class="bg-warning">Invalid Name</button>
+        </td>
+        <!-- <td>
+          <p ng-show="!isValidName(addTeamName)" class="bg-warning">(ID Invalid)</p>
+        </td> -->
+      </tr>
+    </tbody>
+  </table>
+</div>
