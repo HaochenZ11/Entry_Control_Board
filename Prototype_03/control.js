@@ -115,8 +115,13 @@ app.controller("control", function($scope, $interval) {
   }
 
   $scope.isValidName = function(teamName){
-    if(teamName === "" || $scope.firefighters.indexOf(teamName) != -1){
+    if(teamName === ""){
       return false;
+    }
+    for (i = 0; i < $scope.firefighters.length; i++){
+      if($scope.firefighters[i].name===teamName){
+        return false;
+      }
     }
     return true;
   }
@@ -130,6 +135,25 @@ app.controller("control", function($scope, $interval) {
       timeIn:false
     });
     return true;
+  }
+
+  $scope.moveUp = function(index){
+    let i = index;
+    if(index === 0){
+      return false;
+    }
+    tmp = $scope.firefighters[i];
+    $scope.firefighters[i] = $scope.firefighters[i-1];
+    $scope.firefighters[i-1] = tmp;
+    return true;
+  }
+
+  $scope.moveDown = function(index){
+    let i = index;
+    if(index === $scope.firefighters.length - 1){
+      return false;
+    }
+    $scope.moveUp(i+1);
   }
 
 });

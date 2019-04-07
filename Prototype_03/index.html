@@ -35,14 +35,12 @@
       <ul>
         <li>(done)Timing for how long firefighting teams have been in the fire.</li>
         <li>(done)Whiting out for firefighting teams who are not currently engaged in the fire.</li>
-        <li>Sorting non-engaged firefighting teams to the bottom of the list.</li>
+        <li>(removed)Sorting non-engaged firefighting teams to the bottom of the list.</li>
         <li>(done)Functionality for adding and subtracting firefighting teams.</li>
-        <li>Functionality for changing order of firefighting teams in table.</li>
-        <li></li>
+        <li>(done)Functionality for changing order of firefighting teams in table.</li>
         <li>(done)Contrast ratio testing.</li>
         <li>(done)16px+ fonts</li>
-        <li>40x40pt alerts</li>
-        <li></li>
+        <li>(removed)40x40pt alerts</li>
       </ul>
     </p>
 
@@ -92,22 +90,6 @@
 
     <div class = "col-sm-12 alternate">
       <hr>
-      <h2>Settings: Timing</h2>
-      <h3>Cutoff Times for Checking In</h3>
-      <p>First cutoff time (turns <span class="color-orange">orange</span> after this): <input type="number" name="checkInCutoff1" ng-model="timeTiersCheckIn[0]"
-           min="0">[seconds]</p>
-      <p>Second cutoff time (turns <span class="color-red">red</span> after this): <input type="number" name="checkInCutoff2" ng-model="timeTiersCheckIn[1]"
-          min="0">[seconds]</p>
-
-      <h3>Cutoff Times for Being In Fire</h3>
-      <p>First cutoff time (turns <span class="color-orange">orange</span> after this): <input type="number" name="inFireCutoff1" ng-model="timeTiersInFire[0]"
-           min="0">[seconds]</p>
-      <p>Second cutoff time (turns <span class="color-red">red</span> after this): <input type="number" name="inFireCutoff2" ng-model="timeTiersInFire[1]"
-          min="0">[seconds]</p>
-    </div>
-
-    <div class = "col-sm-12">
-      <hr>
       <h2>Settings: Teams</h2>
       <table class = "table">
         <thead>
@@ -120,15 +102,41 @@
             <td>
               <button ng-click = "deleteFirefighter(firefighters, i)">Delete Team</button>
             </td>
+            <td>
+              <button ng-click = "moveUp(i)" ng-show="i != 0">Up</button>
+            </td>
+            <td>
+              <button ng-click = "moveDown(i)" ng-show="i != firefighters.length-1">Down</button>
+            </td>
           </tr>
           <tr>
-            <td>Add Team:</td>
-            <td>ID: <input type = "text" ng-model="addTeamName"></input></td>
-            <td><button ng-show="isValidName(addTeamName)" ng-click="addTeam(addTeamName)">Add Team</button></td>
+            <th>Add Team:</th>
+            <td>ID: <input type = "text" ng-model="addTeamName"></input>
+              <button ng-show="isValidName(addTeamName)" ng-click="addTeam(addTeamName)" class="bg-success">Add Team</button>
+              <button ng-show="!isValidName(addTeamName)" class="bg-warning">Invalid ID</button>
+            </td>
+            <!-- <td>
+              <p ng-show="!isValidName(addTeamName)" class="bg-warning">(ID Invalid)</p>
+            </td> -->
           </tr>
         </tbody>
       </table>
-      {{addTeamName}}
+    </div>
+
+    <div class = "col-sm-12">
+      <hr>
+      <h2>Settings: Timing</h2>
+      <h3>Cutoff Times for Checking In</h3>
+      <p>First cutoff time (turns <span class="color-orange">orange</span> after this): <input type="number" name="checkInCutoff1" ng-model="timeTiersCheckIn[0]"
+           min="0">[seconds]</p>
+      <p>Second cutoff time (turns <span class="color-red">red</span> after this): <input type="number" name="checkInCutoff2" ng-model="timeTiersCheckIn[1]"
+          min="0">[seconds]</p>
+
+      <h3>Cutoff Times for Being In Fire</h3>
+      <p>First cutoff time (turns <span class="color-orange">orange</span> after this): <input type="number" name="inFireCutoff1" ng-model="timeTiersInFire[0]"
+           min="0">[seconds]</p>
+      <p>Second cutoff time (turns <span class="color-red">red</span> after this): <input type="number" name="inFireCutoff2" ng-model="timeTiersInFire[1]"
+          min="0">[seconds]</p>
     </div>
 
 
