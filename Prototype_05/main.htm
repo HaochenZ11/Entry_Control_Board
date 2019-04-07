@@ -1,0 +1,43 @@
+<div class = "col-sm-12">
+  <h2>Entry Control Board</h2>
+  <hr>
+  <table class = "table">
+  <thead>
+  <tr class = "top">
+    <th>Team ID</th>
+    <th>Time In Fire</th>
+    <th>Time Since Last Check</th>
+    <th>Location</th>
+    <th>Assignment</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat = "firefighter in firefighters">
+    <th>{{firefighter.name}} <button ng-click="checkInOrOut(firefighter)">{{getSignInOutText(firefighter)}}</button>
+    </th>
+    <td ng-class = "{'color-red': getColorInFire(firefighter)==='Red', 'color-orange': getColorInFire(firefighter)==='Orange'}">
+      {{getTimeInFire(firefighter) | date:'mm:ss'}}
+    </td>
+    <td ng-class = "{'color-red': getColorCheckIn(firefighter)==='Red', 'color-orange': getColorCheckIn(firefighter)==='Orange'}">
+      {{getTimeSinceCheckIn(firefighter) | date:'mm:ss'}}
+      <button ng-click="firefighter.lastCheckIn = now" ng-hide = "firefighter.lastCheckIn === false">Check!</button>
+    </td>
+    <!-- <td>{{locations[firefighter.location]}}</td> -->
+    <td>
+      <select class = "c_select" ng-change="changedBox" ng-model="firefighter.location" ng-options="location for location in locations"></select>
+    </td>
+    <!-- <td>{{assignments[firefighter.assignment] }}</td> -->
+    <td>
+      <select class = "c_select" ng-change="changedBox" ng-model="firefighter.assignment" ng-options="assignment for assignment in assignments"></select>
+    </td>
+  </tr>
+  <tr>
+    <th>Add Team:</th>
+    <td colspan=4>ID: <input type = "text" ng-model="addTeamName"></input>
+      <button ng-show="isValidName(addTeamName)" ng-click="addTeam(addTeamName); addTeamName = ''" class="bg-success">Add Team</button>
+      <button ng-show="!isValidName(addTeamName)" class="bg-warning">Invalid ID</button>
+    </td>
+  </tr>
+  </tbody>
+  </table>
+</div>
