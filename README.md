@@ -3,7 +3,8 @@
 ### What this Is
 We are making a digitized version of the entry control board (ECB) used by firefighters in the GTA. The board keeps track of where each firefighting team is within a building and what their current task is.
 
-Available for testing here (v3.4): https://amanb2000.github.io/yaah/Prototype_04/#!/
+Available for testing here (v3.5): https://amanb2000.github.io/yaah/Prototype_05/#!/
+High Rise Prototype v3.5: https://amanb2000.github.io/yaah/Prototype_05/High_Rise_05/#!/
 
 ### `Angular`
 I learned Angular for this project, so the `Angular` folder has my preliminary angular demos.
