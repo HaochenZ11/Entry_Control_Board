@@ -7,7 +7,8 @@
     <th>Team ID</th>
     <th>Time In Fire</th>
     <th>Time Since Last Check</th>
-    <th>Location</th>
+    <th>Floor #</th>
+    <th>Sub-Location</th>
     <th>Assignment</th>
   </tr>
   </thead>
@@ -23,6 +24,10 @@
       <button ng-click="firefighter.lastCheckIn = now" ng-hide = "firefighter.lastCheckIn === false">Check!</button>
     </td>
     <!-- <td>{{locations[firefighter.location]}}</td> -->
+    <td>
+      <input type = "number" class = "c_select skinny" ng-change="changedBox" ng-model="firefighter.location"></input>
+    </td>
+
     <td>
       <select class = "c_select" ng-change="changedBox" ng-model="firefighter.location" ng-options="location for location in locations"></select>
     </td>

@@ -21,11 +21,10 @@ app.controller("control", function($scope, $interval) {
   ];
   $scope.locations = [
     "--UNASSIGNED--",
-    "BACK YARD",
-    "BASEMENT",
-    "FAR BEDROOM",
-    "KITCHEN",
-    "TOP FLOOR"
+    "NORTH",
+    "SOUTH",
+    "EAST",
+    "WEST",
   ];
   $scope.assignments = [
     "--UNASSIGNED--",
