@@ -1,11 +1,17 @@
 # Entry_Control_Board
 
 ### What this Is
-We are making a digitized version of the entry control board (ECB) used by firefighters in the GTA. The board keeps track of where each firefighting team is within a building and what their current task is.
+Team YAAH (Yannis, Amy, Aman, and Haochen) is making a digitized version of the entry control board (ECB) used by firefighters in the GTA. The board keeps track of where each firefighting team is within a building and what their current task is. Our goal is to reduce human error and increase input/output efficiency.
+
+![YAAH Entry Control Board Screenshot](https://imgur.com/a/CPOCly1)
 
 Available for testing here (v3.5): https://amanb2000.github.io/yaah/Prototype_05/#!/
 
 High Rise Prototype v3.5: https://amanb2000.github.io/yaah/Prototype_05/High_Rise_05/#!/
+
+### What We Have Learned
+
+## About the Prototypes
 
 ### `Angular`
 I learned Angular for this project, so the `Angular` folder has my preliminary angular demos.
@@ -44,3 +50,8 @@ Fixed some UI tweaks including:
 * Alphabetical ordering for pre-existing/defined locations and assignments.
 * Created high-rise specific version
 * Consistency of styling
+
+### `High_Rise_05`: YAAH ECB Version 3.5-H - Adding High Rise Functionality
+According to the firefighters in Toronto fire station No. 315, it is useful to have a numerical input for the location as it would be inconvenient to use a drop-down menu for large numbers of floors when tracking location.
+
+This version primarily implemented the numerical input along with cardinal directions as the default settings for sub-location. This was well-received by the firefighters in station No. 315.
