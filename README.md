@@ -3,7 +3,7 @@
 ### What this Is
 Team YAAH (Yannis, Amy, Aman, and Haochen) is making a digitized version of the entry control board (ECB) used by firefighters in the GTA. The board keeps track of where each firefighting team is within a building and what their current task is. Our goal is to reduce human error and increase input/output efficiency.
 
-![YAAH Entry Control Board Screenshot](https://imgur.com/a/CPOCly1)
+![YAAH Entry Control Board Screenshot](https://i.imgur.com/GMBbEON.png)
 
 Available for testing here (v3.5): https://amanb2000.github.io/yaah/Prototype_05/#!/
 
